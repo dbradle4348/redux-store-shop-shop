@@ -1,19 +1,24 @@
 {
-  "name": "main",
+  "name": "mern-shopping",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "server/server.js",
   "scripts": {
-    "test": "jest",
-    "start": "node server.js"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "cd server && npm start",
+    "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "heroku-postbuild": "cd client && npm run build"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "@reduxjs/toolkit": "^1.5.1",
+    "if-env": "^1.0.4",
+    "react-redux": "^7.2.4"
   },
   "devDependencies": {
-    "jest": "^25.1.0"
+    "concurrently": "^5.1.0"
   }
 }
