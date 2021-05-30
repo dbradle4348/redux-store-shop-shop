@@ -10,7 +10,7 @@ function CategoryMenu() {
     return state
   });
   
-  const dispatch = usedispatch();
+  const dispatch = useDispatch();
 
   const { categories } = state;
 
