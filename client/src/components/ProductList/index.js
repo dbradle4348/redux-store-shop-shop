@@ -6,7 +6,6 @@ import { useQuery } from '@apollo/react-hooks';
 import { QUERY_PRODUCTS } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
 import spinner from "../../assets/spinner.gif"
-import { startCase } from "lodash";
 
 function ProductList() {
   const dispatch = useDispatch();
