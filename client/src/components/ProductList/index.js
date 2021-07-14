@@ -14,7 +14,7 @@ function ProductList() {
   const currentCategory = state;
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
-
+  console.log(data)
   useEffect(() => {
     if(data) {
       dispatch({
