@@ -9,7 +9,7 @@ import spinner from "../../assets/spinner.gif"
 
 function ProductList() {
   const dispatch = useDispatch();
-  const state = useSelector(state => state);
+  const state = useSelector((state) => state);
 
   const currentCategory = state;
 
@@ -28,7 +28,7 @@ function ProductList() {
       idbPromise('products', 'get').then((products) => {
         dispatch({
           type: UPDATE_PRODUCTS,
-         products: products
+         products: products,
        });
       });
     }
