@@ -13,17 +13,27 @@ import { Provider } from "react-redux";
 import Success from "./pages/Success";
 import OrderHistory from "./pages/OrderHistory";
 import store from './utils/store';
+import { setContext } from '@apollo/client/link/context';
+import { createHttpLink } from "apollo-link-http";
+import { InMemoryCache } from "apollo-cache-inmemory";
+
+const uriLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
 
 const client = new ApolloClient({
-  request: (operation) => {
-    const token = localStorage.getItem('id_token')
-    operation.setContext({
-      headers: {
-        authorization: token ? `Bearer ${token}` : ''
-      }
-    })
-  },
-  uri: '/graphql',
+  link: authLink.concat(uriLink),
+  cache: new InMemoryCache(),
 })
 
 function App() {
