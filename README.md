@@ -2,6 +2,8 @@
 
 ## Description
 
+Deployed Application: https://fierce-hollows-40581.herokuapp.com/
+
 Shop-Shop is an online shop where a user can shop and put those shopping things in a virtual shopping cart and continue shopping till they want to end that shop and check out.
 
 Shop-Shop was made using Node.js, MongoDB, React, and Apollo Server with the state managed by Redux. Purchases are made through Stripe.
